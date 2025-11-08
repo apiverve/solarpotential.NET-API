@@ -4,62 +4,67 @@ using Newtonsoft.Json;
 
 namespace APIVerve
 {
-public class coordinates
-{
-    [JsonProperty("latitude")]
-    public double latitude { get; set; }
+    /// <summary>
+    /// Coordinates data
+    /// </summary>
+    public class Coordinates
+    {
+        [JsonProperty("latitude")]
+        public double Latitude { get; set; }
 
-    [JsonProperty("longitude")]
-    public double longitude { get; set; }
+        [JsonProperty("longitude")]
+        public double Longitude { get; set; }
 
-}
+    }
+    /// <summary>
+    /// UsableHours data
+    /// </summary>
+    public class UsableHours
+    {
+        [JsonProperty("avgDailyUsableSunlightHours")]
+        public double AvgDailyUsableSunlightHours { get; set; }
 
-public class usableHours
-{
-    [JsonProperty("avgDailyUsableSunlightHours")]
-    public double avgDailyUsableSunlightHours { get; set; }
+        [JsonProperty("yearlyUsableSunlightHoursRaw")]
+        public int YearlyUsableSunlightHoursRaw { get; set; }
 
-    [JsonProperty("yearlyUsableSunlightHoursRaw")]
-    public int yearlyUsableSunlightHoursRaw { get; set; }
+        [JsonProperty("adjustedYearlyUsableSunlightHours")]
+        public int AdjustedYearlyUsableSunlightHours { get; set; }
 
-    [JsonProperty("adjustedYearlyUsableSunlightHours")]
-    public int adjustedYearlyUsableSunlightHours { get; set; }
+    }
+    /// <summary>
+    /// Data data
+    /// </summary>
+    public class Data
+    {
+        [JsonProperty("coordinates")]
+        public Coordinates Coordinates { get; set; }
 
-}
+        [JsonProperty("usableHours")]
+        public UsableHours UsableHours { get; set; }
 
-public class data
-{
-    [JsonProperty("coordinates")]
-    public coordinates coordinates { get; set; }
+        [JsonProperty("bestDirection")]
+        public string BestDirection { get; set; }
 
-    [JsonProperty("usableHours")]
-    public usableHours usableHours { get; set; }
+        [JsonProperty("cloudFactor")]
+        public double CloudFactor { get; set; }
 
-    [JsonProperty("bestDirection")]
-    public string bestDirection { get; set; }
+        [JsonProperty("disclaimer")]
+        public string Disclaimer { get; set; }
 
-    [JsonProperty("cloudFactor")]
-    public double cloudFactor { get; set; }
+    }
+    /// <summary>
+    /// API Response object
+    /// </summary>
+    public class ResponseObj
+    {
+        [JsonProperty("status")]
+        public string Status { get; set; }
 
-    [JsonProperty("disaclaimer")]
-    public string disaclaimer { get; set; }
+        [JsonProperty("error")]
+        public object Error { get; set; }
 
-}
+        [JsonProperty("data")]
+        public Data Data { get; set; }
 
-public class ResponseObj
-{
-    [JsonProperty("status")]
-    public string status { get; set; }
-
-    [JsonProperty("error")]
-    public object error { get; set; }
-
-    [JsonProperty("data")]
-    public data data { get; set; }
-
-    [JsonProperty("code")]
-    public int code { get; set; }
-
-}
-
+    }
 }
